@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cartest.dao.StudentDao">
+    <resultMap type="Student" id="studentResultMap">
+        <id property="student_id" column="ID" />
+        <result property="student_name" column="NAME" />
+        <result property="student_pin" column="PIN" />
+        <result property="student_phone" column="PHONE"/>
+    </resultMap>
+    <select id="queryStudentById" parameterType="int" resultMap="studentResultMap">
+        select * from student where id = #{studentId}
+    </select>
+    <insert id="insertStudent" useGeneratedKeys="true" keyProperty="student_id" keyColumn="ID" parameterType="Student">
+        <selectKey keyProperty="student_id" resultType="java.lang.Integer" order="AFTER">
+            select STUDENT_SEQ.currval from dual
+        </selectKey>
+        INSERT INTO STUDENT(NAME,PIN,PHONE)
+        VALUES (#{student_name},#{student_pin},#{student_phone})
+    </insert>
+</mapper>

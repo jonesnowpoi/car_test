@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cartest_parent/cartest_common/cartest_common.iml" filepath="$PROJECT_DIR$/cartest_parent/cartest_common/cartest_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cartest_parent/cartest_dao/cartest_dao.iml" filepath="$PROJECT_DIR$/cartest_parent/cartest_dao/cartest_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cartest_parent/cartest_front_web/cartest_front_web.iml" filepath="$PROJECT_DIR$/cartest_parent/cartest_front_web/cartest_front_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cartest_parent/cartest_parent.iml" filepath="$PROJECT_DIR$/cartest_parent/cartest_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cartest_parent/cartest_pojo/cartest_pojo.iml" filepath="$PROJECT_DIR$/cartest_parent/cartest_pojo/cartest_pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cartest_parent/cartest_service/cartest_service.iml" filepath="$PROJECT_DIR$/cartest_parent/cartest_service/cartest_service.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cartest_front_web:war">
+    <output-path>$PROJECT_DIR$/cartest_parent/cartest_front_web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>cartest_front_web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="cartest_front_web.war">
+      <element id="artifact" artifact-name="cartest_front_web:war exploded" />
+    </root>
+  </artifact>
+</component>

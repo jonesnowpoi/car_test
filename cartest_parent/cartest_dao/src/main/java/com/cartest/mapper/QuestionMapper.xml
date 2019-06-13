@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cartest.dao.QuestionDao">
+    <sql id="QuestionColumn">
+      question_id,
+      question_body,
+      question_form,
+      branch_a,
+      branch_b,
+      branch_c,
+      pic_name,
+      question_key,
+      question_type_id,
+      question_mark,
+      question_sts
+    </sql>
+    <resultMap id="QuestionResultMap" type="Question" >
+        <id property="question_id" column="question_id"/>
+        <result property="question_body" column="question_body"/>
+        <result property="question_form" column="question_form"/>
+        <result property="branch_a" column="branch_a"/>
+        <result property="branch_b" column="branch_b"/>
+        <result property="branch_c" column="branch_c"/>
+        <result property="pic_name" column="pic_name"/>
+        <result property="question_key" column="question_key"/>
+        <result property="question_type_id" column="question_type_id"/>
+        <result property="question_mark" column="question_mark"/>
+        <result property="question_sts" column="question_sts"/>
+    </resultMap>
+    <select id="createTestPaper" statementType="CALLABLE" parameterType="java.util.Map">
+        <![CDATA[
+        call GETTESTPAPER(
+          #{res_cursor,jdbcType=CURSOR,mode=OUT,javaType=ResultSet,resultMap=QuestionResultMap}
+        )
+        ]]>
+    </select>
+    <select id="selectQuestionById" parameterType="int" resultMap="QuestionResultMap">
+        select * from QUESTION where QUESTION_ID = #{questionId}
+    </select>
+</mapper>

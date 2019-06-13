@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cartest.dao.TestPaperDao">
+    <resultMap type="TestPaper" id="TestPaperResultMap">
+        <id property="paper_id" column="PAPER_ID" />
+        <result property="question_id_seq" column="QUESTION_ID_SEQ" />
+        <result property="key_seq" column="KEY_SEQ" />
+    </resultMap>
+    <select id="selectTestPaperById" parameterType="int" resultMap="TestPaperResultMap">
+        select * from PAPER where PAPER_ID = #{paperId}
+    </select>
+    <insert id="insertTestPaper" useGeneratedKeys="true" keyProperty="paper_id" keyColumn="PAPER_ID" parameterType="TestPaper">
+        <selectKey keyProperty="paper_id" resultType="java.lang.Integer" order="AFTER">
+            select PAPER_SEQ.currval from dual
+        </selectKey>
+        INSERT INTO PAPER(QUESTION_ID_SEQ,KEY_SEQ)
+        VALUES (#{question_id_seq},#{key_seq})
+    </insert>
+</mapper>

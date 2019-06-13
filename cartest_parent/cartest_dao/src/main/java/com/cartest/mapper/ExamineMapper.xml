@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cartest.dao.ExamineDao">
+    <resultMap type="Examine" id="examineResultMap">
+        <id property="examine_id" column="ID" />
+        <result property="examine_in" column="EM_IN" />
+        <result property="examine_pwd" column="EM_PWD" />
+        <result property="student_id" column="STUDENT"/>
+        <result property="student_answer" column="ANSWER"/>
+        <result property="score" column="SCORE"/>
+        <result property="paper_id" column="PAPER_ID"/>
+        <result property="examine_date" column="EM_DATE" jdbcType="TIMESTAMP"/>
+        <result property="status" column="STATUS"/>
+    </resultMap>
+
+    <insert id="insertExamine" useGeneratedKeys="true" keyProperty="examine_id" keyColumn="ID" parameterType="Examine">
+        <selectKey keyProperty="examine_id" resultType="java.lang.Integer" order="AFTER">
+            select EXAMINE_SEQ.currval from dual
+        </selectKey>
+        INSERT INTO EXAMINE(EM_IN,EM_PWD,STUDENT,ANSWER,SCORE,PAPER_ID,EM_DATE,STATUS)
+        VALUES (#{examine_in},#{examine_pwd},#{student_id},#{student_answer},#{score},#{paper_id},#{examine_date,jdbcType=TIMESTAMP},#{status})
+    </insert>
+    <select id="selectExamineByStudentId" parameterType="int" resultMap="examineResultMap">
+        select * from EXAMINE where STUDENT = #{studentId}
+    </select>
+    <select id="selectExamineById" parameterType="int" resultMap="examineResultMap">
+        select * from EXAMINE where id = #{examineId}
+    </select>
+</mapper>

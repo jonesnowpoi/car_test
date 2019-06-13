@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cartest.dao.UserDao">
+    <resultMap type="User" id="UserResultMap">
+        <id property="user_id" column="USER_ID" />
+        <result property="user_name" column="USER_NAME" />
+        <result property="login_name" column="LOGIN_NAME" />
+        <result property="password" column="PASSWORD" />
+    </resultMap>
+    <select id="selectUserByLoginName" parameterType="String" resultMap="UserResultMap">
+        select * from USERS where LOGIN_NAME like #{LoginName}
+    </select>
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="user_id" keyColumn="USER_ID" parameterType="User">
+        <selectKey keyProperty="user_id" resultType="java.lang.Integer" order="AFTER">
+            select USERS_SEQ.currval from dual
+        </selectKey>
+        INSERT INTO USERS (USER_NAME,LOGIN_NAME,PASSWORD)
+        VALUES (#{user_name},#{login_name},#{password})
+    </insert>
+</mapper>
